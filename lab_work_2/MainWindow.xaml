@@ -1,0 +1,63 @@
+﻿<Window x:Class="lab_work_2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:lab_work_2"
+        mc:Ignorable="d"
+        Title="Lab Work 2, variant 6, Markel Ryabtsev" Height="360" Width="300">
+    <StackPanel Margin="16">
+        <Grid ShowGridLines="False" Margin="6">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="80"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            
+            <Label 
+                Grid.Row="0" Grid.Column="0" 
+                Content="X =" 
+                HorizontalAlignment="Left" VerticalAlignment="Center"
+                Margin="0 6 0 6" />
+            <TextBox 
+                Name="XValueTextBox" 
+                Grid.Row="0" Grid.Column="1" 
+                VerticalContentAlignment="Center"
+                Margin="0 6 0 6"/>
+            
+            <Label 
+                Grid.Row="1" Grid.Column="0" 
+                Content="Y =" 
+                HorizontalAlignment="Left" VerticalAlignment="Center"
+                Margin="0 6 0 6"/>
+            <TextBox 
+                Name="YValueTextBox" 
+                Grid.Row="1" Grid.Column="1" 
+                VerticalContentAlignment="Center"
+                Margin="0 6 0 6"/>
+            
+            <GroupBox Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Header="f(x)" Margin="20 0 0 0">
+                <StackPanel>
+                    <RadioButton Name="FirstFuncRadioButton" IsChecked="True" Checked="RadioButton_OnChecked" Margin="3">sh(x)</RadioButton>
+                    <RadioButton Name="SecondFuncRadioButton" Checked="RadioButton_OnChecked" Margin="3">x^2</RadioButton>
+                    <RadioButton Name="ThirdFuncRadioButton" Checked="RadioButton_OnChecked" Margin="3">e^x</RadioButton>
+                </StackPanel>
+            </GroupBox>
+        </Grid>
+        
+        <Label Content="Result" HorizontalAlignment="Center" Margin="0 16 0 0"/>
+        <Border Background="GhostWhite" BorderBrush="Gainsboro" BorderThickness="1">
+            <TextBlock Name="ResultTextBlock" Width="Auto" Height="100" />
+        </Border>
+        <Button 
+            Name="GetResultButton" 
+            Click="GetResultButton_OnClick"
+            Content="Get result" 
+            Width="Auto" 
+            Margin="0 16 0 0"/>
+    </StackPanel>
+</Window>
