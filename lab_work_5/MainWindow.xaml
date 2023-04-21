@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:lab_work_5"
         mc:Ignorable="d"
-        Title="Lab Work 4, variant 6, Markel Ryabtsev" Height="240" Width="500" ResizeMode="NoResize">
+        Title="Lab Work 5, variant 6, Markel Ryabtsev" Height="240" Width="500" ResizeMode="NoResize">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />

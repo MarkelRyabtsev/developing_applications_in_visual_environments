@@ -1,0 +1,108 @@
+﻿<Window x:Class="lab_work_6.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:lab_work_6"
+        mc:Ignorable="d"
+        Title="Lab Work 6, variant 6" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="0.5*" />
+        </Grid.ColumnDefinitions>
+        <DataGrid
+            x:Name="ResultGrid"
+            MinHeight="200"
+            Margin="8"
+            AutoGenerateColumns="False"
+            ItemsSource="{DynamicResource ResourceKey=_employees}">
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Delete" Click="Delete_OnClick"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Full name" Binding="{Binding Path=FullName}" Width="Auto" />
+                <DataGridTextColumn Header="Number" Binding="{Binding Path=Number}" Width="*" />
+                <DataGridTextColumn Header="Work hours" Binding="{Binding Path=WorkHours}" Width="*" />
+                <DataGridTextColumn Header="Tariff" Binding="{Binding Path=Tariff}" Width="*" />
+                <DataGridTextColumn Header="Salary" Binding="{Binding Path=Salary}" Width="*" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Grid.Column="1" Margin="8">
+            <GroupBox Header="Add employee">
+                <Grid  Margin="6">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                
+                    <Label Grid.Row="0" Grid.Column="0" Margin="0 0 0 6">Full name</Label>
+                    <TextBox Name="FullNameTextBox" Grid.Row="0" Grid.Column="1" Margin="0 0 0 6" TextChanged="OnTextChanged"></TextBox>
+                
+                    <Label Grid.Row="1" Grid.Column="0" Margin="0 0 0 6">Number</Label>
+                    <TextBox Name="NumberTextBox" Grid.Row="1" Grid.Column="1" Margin="0 0 0 6" TextChanged="OnTextChanged"></TextBox>
+                
+                    <Label Grid.Row="2" Grid.Column="0" Margin="0 0 0 6">Work hours</Label>
+                    <TextBox Name="WorkHoursTextBox" Grid.Row="2" Grid.Column="1" Margin="0 0 0 6" TextChanged="OnTextChanged"></TextBox>
+                
+                    <Label Grid.Row="3" Grid.Column="0" Margin="0 0 0 6">Tariff</Label>
+                    <ComboBox Name="TariffComboBox" Grid.Row="3" Grid.Column="1" Margin="0 0 0 6" SelectionChanged="OnTextChanged">
+                        <ComboBoxItem>
+                            <TextBlock>10</TextBlock>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock>15</TextBlock>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock>20</TextBlock>
+                        </ComboBoxItem>
+                    </ComboBox>
+                
+                    <Button 
+                        Name="AddButton" 
+                        IsEnabled="False" 
+                        Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" 
+                        Margin="0 8 0 0"
+                        Click="Add_OnClick"
+                        Content="Add"/>
+                </Grid>
+            </GroupBox>
+            <GroupBox Header="List actions" Margin="0 6 0 0">
+                <StackPanel  Margin="6">
+                    <Button 
+                        Name="OpenButton" 
+                        Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" 
+                        Margin="0 0 0 6"
+                        Click="Open_OnClick"
+                        Content="Open"/>
+                    <Button 
+                        Name="SaveButton" 
+                        Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" 
+                        Margin="0 6 0 0"
+                        Click="Save_OnClick" 
+                        Content="Save"/>
+                </StackPanel>
+            </GroupBox>
+            <ComboBox Margin="12">
+                <ComboBoxItem>
+                    <TextBlock>By Full name</TextBlock>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    <TextBlock>By Number</TextBlock>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    <TextBlock>By Work hours</TextBlock>
+                </ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+    </Grid>
+</Window>

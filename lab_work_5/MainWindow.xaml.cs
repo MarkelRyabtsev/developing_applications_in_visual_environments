@@ -21,7 +21,6 @@ namespace lab_work_5
     /// </summary>
     public partial class MainWindow : Window
     {
-        private static readonly char[] Signs = new[] { '+', '-' };
         private static readonly string IntegersPattern = @"[+-]?\d+";
 
         public MainWindow()
@@ -44,24 +43,10 @@ namespace lab_work_5
 
         private List<string> FindIntegers(string text)
         {
-            var separators = text
-                .Where(c => !char.IsDigit(c) && c != '-' && c != '+')
-                .ToHashSet();
-            var substringsWithSigns = text
-                .Split(separators.ToArray())
-                .Where(s =>
-                    (!string.IsNullOrEmpty(s) && !string.IsNullOrWhiteSpace(s))
-                    || (s.Length == 1 && (s.Contains('+') || s.Contains('-')))
-                )
-                .ToList();
-            
             var pureIntegers = new List<string>();
             var regex = new Regex(IntegersPattern);
-            foreach (var substring in substringsWithSigns)
-            {
-                var matches = regex.Matches(substring);
-                pureIntegers.AddRange(matches.Select(s => s.Value));
-            }
+            var matches = regex.Matches(text);
+            pureIntegers.AddRange(matches.Select(s => s.Value));
 
             return pureIntegers;
         }
