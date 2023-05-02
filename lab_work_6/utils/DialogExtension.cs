@@ -6,7 +6,7 @@ public static class DialogExtension
 {
     public static string? SaveFile()
     {
-        string? fileName = null;
+        var fileName = string.Empty;
         var dialog = new Microsoft.Win32.SaveFileDialog();
         dialog.FileName = "Employees";
         dialog.DefaultExt = ".json";
@@ -16,13 +16,17 @@ public static class DialogExtension
         {
             fileName = dialog.FileName;
         }
+        else
+        {
+            return null;
+        }
 
         return fileName;
     }
     
     public static string? OpenFile()
     {
-        string? fileName = null;
+        var fileName = string.Empty;
         var dialog = new Microsoft.Win32.OpenFileDialog();
         dialog.DefaultExt = ".json";
         dialog.Filter = "JSON file (.json)|*.json";
@@ -30,6 +34,10 @@ public static class DialogExtension
         if (dialog.ShowDialog() == true)
         {
             fileName = dialog.FileName;
+        }
+        else
+        {
+            return null;
         }
 
         return fileName;

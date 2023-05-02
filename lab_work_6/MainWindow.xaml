@@ -46,17 +46,17 @@
                     </Grid.RowDefinitions>
                 
                     <Label Grid.Row="0" Grid.Column="0" Margin="0 0 0 6">Full name</Label>
-                    <TextBox Name="FullNameTextBox" Grid.Row="0" Grid.Column="1" Margin="0 0 0 6" TextChanged="OnTextChanged"></TextBox>
+                    <TextBox Name="FullNameTextBox" Grid.Row="0" Grid.Column="1" Margin="0 0 0 6" TextChanged="OnTextChanged" VerticalContentAlignment="Center"></TextBox>
                 
                     <Label Grid.Row="1" Grid.Column="0" Margin="0 0 0 6">Number</Label>
-                    <TextBox Name="NumberTextBox" Grid.Row="1" Grid.Column="1" Margin="0 0 0 6" TextChanged="OnTextChanged"></TextBox>
+                    <TextBox Name="NumberTextBox" Grid.Row="1" Grid.Column="1" Margin="0 0 0 6" TextChanged="OnTextChanged" VerticalContentAlignment="Center"></TextBox>
                 
                     <Label Grid.Row="2" Grid.Column="0" Margin="0 0 0 6">Work hours</Label>
-                    <TextBox Name="WorkHoursTextBox" Grid.Row="2" Grid.Column="1" Margin="0 0 0 6" TextChanged="OnTextChanged"></TextBox>
+                    <TextBox Name="WorkHoursTextBox" Grid.Row="2" Grid.Column="1" Margin="0 0 0 6" TextChanged="OnTextChanged" VerticalContentAlignment="Center"></TextBox>
                 
                     <Label Grid.Row="3" Grid.Column="0" Margin="0 0 0 6">Tariff</Label>
                     <ComboBox Name="TariffComboBox" Grid.Row="3" Grid.Column="1" Margin="0 0 0 6" SelectionChanged="OnTextChanged">
-                        <ComboBoxItem>
+                        <ComboBoxItem IsSelected="True">
                             <TextBlock>10</TextBlock>
                         </ComboBoxItem>
                         <ComboBoxItem>
@@ -92,17 +92,22 @@
                         Content="Save"/>
                 </StackPanel>
             </GroupBox>
-            <ComboBox Margin="12">
-                <ComboBoxItem>
-                    <TextBlock>By Full name</TextBlock>
-                </ComboBoxItem>
-                <ComboBoxItem>
-                    <TextBlock>By Number</TextBlock>
-                </ComboBoxItem>
-                <ComboBoxItem>
-                    <TextBlock>By Work hours</TextBlock>
-                </ComboBoxItem>
-            </ComboBox>
+            
+            <Grid Margin="12">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                
+                <Label Grid.Column="0" Content="Sort by"/>
+                <ComboBox 
+                    Name="SortComboBox"
+                    Grid.Column="1"
+                    SelectionChanged="SortTypeChanged" 
+                    ItemsSource="{Binding _sortTypes}"
+                    DisplayMemberPath="Name"
+                    SelectedValuePath="SortTypeValue"/>
+            </Grid>
         </StackPanel>
     </Grid>
 </Window>

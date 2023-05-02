@@ -25,4 +25,14 @@ public static class EmployeeExtension
     {
         return new EmployeeDto(employee.FullName, employee.Number, employee.WorkHours, employee.Tariff);
     }
+    
+    public static void SortBy(this List<Employee> list, SortType.SortTypes type)
+    {
+        list.Sort((employee1, employee2) => type switch
+        { 
+            SortType.SortTypes.BY_FULL_NAME => employee1.FullName.CompareTo(employee2.FullName),
+            SortType.SortTypes.BY_NUMBER => employee1.Number.CompareTo(employee2.Number),
+            SortType.SortTypes.BY_WORK_HOURS => employee1.WorkHours.CompareTo(employee2.WorkHours)
+        });
+    }
 }

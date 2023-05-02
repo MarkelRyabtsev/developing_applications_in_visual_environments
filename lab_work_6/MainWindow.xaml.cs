@@ -25,10 +25,19 @@ namespace lab_work_6
     public partial class MainWindow : Window
     {
         private List<Employee> _employees = new ();
-        
+
+        private List<SortType> _sortTypes = new List<SortType>
+        {
+            new SortType(SortType.SortTypes.BY_FULL_NAME),
+            new SortType(SortType.SortTypes.BY_NUMBER),
+            new SortType(SortType.SortTypes.BY_WORK_HOURS)
+        };
+
         public MainWindow()
         {
             InitializeComponent();
+            ResultGrid.ItemsSource = _employees;
+            SortComboBox.ItemsSource = _sortTypes;
         }
         
         private void OnTextChanged(object sender, TextChangedEventArgs e)
@@ -43,7 +52,23 @@ namespace lab_work_6
 
         private void Add_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var fullName = FullNameTextBox.Text.ToString();
+                var number = long.Parse(NumberTextBox.Text.ToString());
+                var workHours = int.Parse(WorkHoursTextBox.Text.ToString());
+                var tariff = int.Parse(TariffComboBox.GetSelectedValue());
+                var employee = new Employee(fullName, number, workHours, tariff);
+                
+                _employees.Add(employee);
+                UpdateAndRefreshList();
+            }
+            catch (Exception exception)
+            {
+                DialogExtension.ShowError(exception.ToString());
+                return;
+            }
+            
         }
         
         private void Open_OnClick(object sender, RoutedEventArgs e)
@@ -51,6 +76,12 @@ namespace lab_work_6
             try
             {
                 var fileName = DialogExtension.OpenFile();
+                
+                if (fileName == null)
+                {
+                    return;
+                }
+                
                 if (string.IsNullOrEmpty(fileName))
                 {
                     DialogExtension.ShowError("ERRRRRRROR");
@@ -63,7 +94,8 @@ namespace lab_work_6
                     _employees = JsonExtension.ToObject<EmployeeDto[]>(json)
                         .ToList()
                         .ToEmployeeList();
-                    ResultGrid.ItemsSource = _employees;
+                    UpdateAndRefreshList();
+                    ResetSortType();
                 }
             }
             catch (Exception exception)
@@ -77,6 +109,12 @@ namespace lab_work_6
             try
             {
                 var fileName = DialogExtension.SaveFile();
+                
+                if (fileName == null)
+                {
+                    return;
+                }
+                
                 if (string.IsNullOrEmpty(fileName))
                 {
                     DialogExtension.ShowError("ERRRRRRROR");
@@ -97,16 +135,20 @@ namespace lab_work_6
 
         private void ValidateFields()
         {
-            var fullName = FullNameTextBox.Text;
-            var number = NumberTextBox.Text;
-            var workHours = WorkHoursTextBox.Text;
-            var tariff = TariffComboBox.SelectedValue.ToString();
+            var fullName = FullNameTextBox.Text.ToString();
+            var number = NumberTextBox.Text.ToString();
+            var workHours = WorkHoursTextBox.Text.ToString();
+            var tariff = TariffComboBox.GetSelectedValue();
 
             var isValid = !string.IsNullOrEmpty(fullName) && 
                           !string.IsNullOrEmpty(number) &&
                           !string.IsNullOrEmpty(workHours) && 
                           !string.IsNullOrEmpty(tariff);
-            AddButton.IsEnabled = isValid;
+            
+            if (AddButton != null)
+            {
+                AddButton.IsEnabled = isValid;
+            }
         }
 
         private void Delete_OnClick(object sender, RoutedEventArgs e)
@@ -115,8 +157,29 @@ namespace lab_work_6
             if (item != null)
             {
                 _employees.Remove(item);
-                ResultGrid.Items.Refresh();
+                UpdateAndRefreshList();
             }
+        }
+
+        private void SortTypeChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var sortType = (SortType)((ComboBox)e.Source)?.SelectedItem;
+            if (sortType != null)
+            {
+                _employees.SortBy(sortType.SortTypeValue);
+                UpdateAndRefreshList();
+            }
+        }
+
+        private void UpdateAndRefreshList()
+        {
+            ResultGrid.ItemsSource = _employees;
+            ResultGrid.Items.Refresh();
+        }
+
+        private void ResetSortType()
+        {
+            SortComboBox.SelectedItem = null;
         }
     }
 }
