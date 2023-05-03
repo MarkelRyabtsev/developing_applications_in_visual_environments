@@ -1,0 +1,102 @@
+﻿<Window x:Class="lab_work_7.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:lab_work_7"
+        mc:Ignorable="d"
+        Title="Lab Work 7, variant 6, Markel Ryabtsev" Height="500" Width="400">
+    <StackPanel Margin="16">
+        <Grid ShowGridLines="False" Margin="6">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Label
+                Grid.Row="0" Grid.Column="0"
+                Content="x1 ="
+                HorizontalAlignment="Left" VerticalAlignment="Center"
+                Margin="0 6 0 6" />
+            <TextBox
+                Name="XStartValueTextBox"
+                Grid.Row="0" Grid.Column="1"
+                VerticalContentAlignment="Center"
+                Margin="0 6 0 6"
+                TextChanged="OnTextChanged" />
+
+            <Label
+                Grid.Row="1" Grid.Column="0"
+                Content="x2 ="
+                HorizontalAlignment="Left" VerticalAlignment="Center"
+                Margin="0 6 0 6" />
+            <TextBox
+                Name="XEndValueTextBox"
+                Grid.Row="1" Grid.Column="1"
+                VerticalContentAlignment="Center"
+                Margin="0 6 0 6"
+                TextChanged="OnTextChanged" />
+
+            <Label
+                Grid.Row="0" Grid.Column="2"
+                Content="n ="
+                HorizontalAlignment="Right" VerticalAlignment="Center"
+                Margin="0 6 0 6" />
+            <TextBox
+                Name="CounterValueTextBox"
+                Grid.Row="0" Grid.Column="3"
+                VerticalContentAlignment="Center"
+                Margin="0 6 0 6"
+                TextChanged="OnTextChanged" />
+
+            <Label
+                Name="StepLabel"
+                Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="4"
+                Content="h = (x2 - x1)/n ="
+                HorizontalAlignment="Left" VerticalAlignment="Center"
+                Margin="0 6 0 6" />
+        </Grid>
+        
+        <Grid Margin="12">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+                
+            <Label Grid.Column="0" Content="Function"/>
+            <ComboBox 
+                Name="FunctionComboBox"
+                Grid.Column="1"
+                SelectedIndex="0"
+                ItemsSource="{Binding _functions}"
+                DisplayMemberPath="OriginalFunc"/>
+        </Grid>
+
+        <Label Content="Result" HorizontalAlignment="Center" Margin="0 16 0 0" />
+        <Border Background="GhostWhite" BorderBrush="Gainsboro" BorderThickness="1">
+            <DataGrid
+                x:Name="ResultGrid"
+                MinHeight="200"
+                AutoGenerateColumns="False"
+                ItemsSource="{DynamicResource ResourceKey=results}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="X" Binding="{Binding Path=X}" Width="60" />
+                    <DataGridTextColumn Header="S(x)" Binding="{Binding Path=ApproximateFunc}" Width="*" />
+                    <DataGridTextColumn Header="Y(x)" Binding="{Binding Path=OriginalFunc}" Width="*" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+        <Button
+            Name="GetResultButton"
+            Click="GetResultButton_OnClick"
+            Content="Get result"
+            Width="Auto"
+            Margin="0 16 0 0" />
+    </StackPanel>
+</Window>
