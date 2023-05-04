@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Lab Work 7, variant 6, Markel Ryabtsev" Height="500" Width="400">
     <StackPanel Margin="16">
-        <Grid ShowGridLines="False" Margin="6">
+        <Grid Margin="6">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
