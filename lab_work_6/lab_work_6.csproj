@@ -11,4 +11,9 @@
       <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="resources\MOCK_DATA.json" />
+      <Resource Include="resources\MOCK_DATA.json" />
+    </ItemGroup>
+
 </Project>

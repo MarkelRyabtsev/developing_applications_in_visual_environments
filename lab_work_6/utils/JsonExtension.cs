@@ -11,7 +11,7 @@ public static class JsonExtension
         return JsonConvert.DeserializeObject<T>(json);
     }
     
-    public static string ToJson(this List<EmployeeDto> items)
+    public static string ToJson<T>(this List<T> items)
     {
         return JsonConvert.SerializeObject(items);
     }

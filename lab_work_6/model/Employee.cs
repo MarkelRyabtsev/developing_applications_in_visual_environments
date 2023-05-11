@@ -1,4 +1,4 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace lab_work_6.model;
 
@@ -12,18 +12,33 @@ public class Employee
     private int _workHours;
     private int _tariff;
 
-    public Employee(string fullName, long number, int workHours, int tariff)
+    [JsonProperty("full_name")]
+    public string FullName
     {
-        _fullName = fullName;
-        _number = number;
-        _workHours = workHours;
-        _tariff = tariff;
+        get => _fullName;
+        set => _fullName = value;
     }
-
-    public string FullName => _fullName;
-    public long Number => _number;
-    public int WorkHours => _workHours;
-    public int Tariff => _tariff;
+    
+    [JsonProperty("number")]
+    public long Number
+    {
+        get => _number;
+        set => _number = value;
+    }
+    
+    [JsonProperty("work_hours")]
+    public int WorkHours{
+        get => _workHours;
+        set => _workHours = value;
+    }
+    
+    [JsonProperty("tariff")]
+    public int Tariff{
+        get => _tariff;
+        set => _tariff = value;
+    }
+    
+    [JsonIgnore]
     public double Salary => GetSalary();
 
     private double GetSalary()

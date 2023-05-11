@@ -58,7 +58,13 @@ namespace lab_work_6
                 var number = long.Parse(NumberTextBox.Text.ToString());
                 var workHours = int.Parse(WorkHoursTextBox.Text.ToString());
                 var tariff = int.Parse(TariffComboBox.GetSelectedValue());
-                var employee = new Employee(fullName, number, workHours, tariff);
+                var employee = new Employee()
+                {
+                    FullName = fullName,
+                    Number = number,
+                    WorkHours = workHours,
+                    Tariff = tariff
+                };
                 
                 _employees.Add(employee);
                 UpdateAndRefreshList();
@@ -91,9 +97,8 @@ namespace lab_work_6
                 using (var r = new StreamReader(fileName))
                 {
                     var json = r.ReadToEnd();
-                    _employees = JsonExtension.ToObject<EmployeeDto[]>(json)
-                        .ToList()
-                        .ToEmployeeList();
+                    _employees = JsonExtension.ToObject<Employee[]>(json)
+                        .ToList();
                     UpdateAndRefreshList();
                     ResetSortType();
                 }
@@ -123,7 +128,7 @@ namespace lab_work_6
                 
                 using (var r = new StreamWriter(fileName))
                 {
-                    var json = _employees.ToEmployeeDtoList().ToJson();
+                    var json = _employees.ToJson();
                     r.Write(json);
                 }
             }
