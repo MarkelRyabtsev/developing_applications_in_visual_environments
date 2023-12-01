@@ -1,0 +1,168 @@
+﻿<Window x:Class="lab_work_9.ColorMixer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:lab_work_9"
+        Title="Lab Work 9, variant 6, Markel Ryabtsev" Height="500" Width="410" ResizeMode="NoResize">
+    <StackPanel Margin="16">
+        
+        <Border Width="360"
+                Height="80"
+                BorderBrush="Gainsboro" 
+                BorderThickness="1">
+            <StackPanel 
+                Name="ColorPreviewStackPanel"
+                HorizontalAlignment="Center"
+                Width="360"
+                Height="80"/>
+        </Border>
+        
+        <Grid Margin="0 12 0 12">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            
+            <WrapPanel Grid.Column="0" HorizontalAlignment="Center" Orientation="Horizontal">
+                
+                <TextBox
+                    Name="RValueTextBox"
+                    Grid.Row="0" Grid.Column="1"
+                    Width="40"
+                    Height="20"
+                    Text="0"
+                    VerticalContentAlignment="Center"
+                    Margin="6"
+                    TextChanged="RValueTextBox_OnTextChanged"/>
+                
+                <Slider
+                    Name="RValueSlider"
+                    IsSelectionRangeEnabled="True"
+                    Orientation="Vertical"
+                    Height="160"
+                    Value="0"
+                    Minimum="0"
+                    Maximum="255"
+                    ValueChanged="RValueSlider_OnValueChanged">
+                    <Slider.Resources>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Red" />
+                        <SolidColorBrush x:Key="{x:Static SystemColors.ControlDarkDarkBrushKey}" Color="Silver" />
+                    </Slider.Resources>
+                </Slider>
+                
+            </WrapPanel>
+            
+            <WrapPanel Grid.Column="1" HorizontalAlignment="Center" Orientation="Horizontal">
+                
+                <TextBox
+                    Name="GValueTextBox"
+                    Grid.Row="0" Grid.Column="1"
+                    Width="40"
+                    Height="20"
+                    Text="0"
+                    VerticalContentAlignment="Center"
+                    Margin="6"
+                    TextChanged="GValueTextBox_OnTextChanged"/>
+                
+                <Slider
+                    Name="GValueSlider"
+                    IsSelectionRangeEnabled="True"
+                    Orientation="Vertical"
+                    Height="160"
+                    Value="0"
+                    Minimum="0"
+                    Maximum="255"
+                    ValueChanged="GValueSlider_OnValueChanged">
+                    <Slider.Resources>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Green" />
+                        <SolidColorBrush x:Key="{x:Static SystemColors.ControlDarkDarkBrushKey}" Color="Silver" />
+                    </Slider.Resources>
+                </Slider>
+                
+            </WrapPanel>
+            
+            <WrapPanel Grid.Column="2" HorizontalAlignment="Center" Orientation="Horizontal">
+                
+                <TextBox
+                    Name="BValueTextBox"
+                    Grid.Row="0" Grid.Column="1"
+                    Width="40"
+                    Height="20"
+                    Text="0"
+                    VerticalContentAlignment="Center"
+                    Margin="6"
+                    TextChanged="BValueTextBox_OnTextChanged"/>
+                
+                <Slider
+                    Name="BValueSlider"
+                    IsSelectionRangeEnabled="True"
+                    Orientation="Vertical"
+                    Height="160"
+                    Value="0"
+                    Minimum="0"
+                    Maximum="255"
+                    ValueChanged="BValueSlider_OnValueChanged">
+                    <Slider.Resources>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Blue" />
+                        <SolidColorBrush x:Key="{x:Static SystemColors.ControlDarkDarkBrushKey}" Color="Silver" />
+                    </Slider.Resources>
+                </Slider>
+                
+            </WrapPanel>
+        </Grid>
+        
+        <Border Margin="0 16 0 0"
+            BorderBrush="Gainsboro" 
+                BorderThickness="1">
+            
+            <StackPanel Orientation="Vertical">
+                
+                <WrapPanel Orientation="Horizontal">
+                
+                    <CheckBox
+                        Name="RColorControlCheckBox"
+                        VerticalContentAlignment="Center"
+                        Margin="6 6 12 6"
+                        Checked="RColorControlCheckBox_OnChecked"
+                        Unchecked="RColorControlCheckBox_OnUnchecked"/>
+                    
+                    <TextBlock Text="Управление красным ScrollBar" VerticalAlignment="Center"/>
+                
+                </WrapPanel>
+                
+                <WrapPanel Orientation="Horizontal">
+                
+                    <CheckBox
+                        Name="GColorControlCheckBox"
+                        VerticalContentAlignment="Center"
+                        Margin="6 6 12 6"
+                        Checked="GColorControlCheckBox_OnChecked"
+                        Unchecked="GColorControlCheckBox_OnUnchecked"/>
+                    
+                    <TextBlock Text="Управление зеленым ScrollBar" VerticalAlignment="Center"/>
+                
+                </WrapPanel>
+                
+                <WrapPanel Orientation="Horizontal">
+                
+                    <CheckBox
+                        Name="BColorControlCheckBox"
+                        VerticalContentAlignment="Center"
+                        Margin="6 6 12 6"
+                        Checked="BColorControlCheckBox_OnChecked"
+                        Unchecked="BColorControlCheckBox_OnUnchecked"/>
+                    
+                    <TextBlock Text="Управление синим ScrollBar" VerticalAlignment="Center"/>
+                
+                </WrapPanel>
+                
+            </StackPanel>
+            
+        </Border>
+    </StackPanel>
+</Window>
