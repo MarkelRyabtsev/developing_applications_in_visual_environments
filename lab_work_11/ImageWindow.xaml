@@ -1,0 +1,50 @@
+﻿<Window x:Class="lab_work_11.ImageWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:lab_work_11"
+        mc:Ignorable="d"
+        Title="ImageWindow" Height="460" Width="400" ResizeMode="NoResize">
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <GroupBox
+                Grid.Column="0"
+                Margin="10"
+                Header="Preview"
+                Width="360"
+                Height="360"
+                BorderBrush="Gainsboro"
+                BorderThickness="1">
+
+                <StackPanel
+                    Orientation="Vertical"
+                    VerticalAlignment="Center">
+                    <Image
+                        Name="PreviewImage"
+                        Source="images/placeholder.png"
+                        Stretch="None"
+                        Grid.Column="0" />
+
+                    <Button
+                        Name="SelectImageButton"
+                        Width="90"
+                        Height="20"
+                        Margin="0 16 0 0"
+                        Content="Select image"
+                        Click="SelectImageButton_OnClick" />
+
+                </StackPanel>
+            </GroupBox>
+
+            <Button
+                Name="ClearImageButton"
+                Width="90"
+                Height="20"
+                Margin="0 6 0 12"
+                Content="Clear image"
+                Click="ClearImageButton_OnClick" />
+
+        </StackPanel>
+    </Grid>
+</Window>

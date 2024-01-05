@@ -1,0 +1,114 @@
+﻿<Page x:Class="lab_work_13.pages.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:lab_work_13.pages"
+      mc:Ignorable="d"
+      Title="MainPage" KeepAlive="True" Height="250" Width="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Margin="6">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Label
+                Grid.Row="0" Grid.Column="0"
+                Content="From X ="
+                HorizontalAlignment="Left" VerticalAlignment="Center"
+                Margin="0 6 0 6" />
+            <TextBox
+                Name="XFromValueTextBox"
+                Grid.Row="0" Grid.Column="1"
+                VerticalContentAlignment="Center"
+                Margin="0 6 0 6"
+                TextChanged="OnTextChanged" />
+
+            <Label
+                Grid.Row="0" Grid.Column="2"
+                Content="To X ="
+                HorizontalAlignment="Left" VerticalAlignment="Center"
+                Margin="0 6 0 6" />
+            <TextBox
+                Name="XToValueTextBox"
+                Grid.Row="0" Grid.Column="3"
+                VerticalContentAlignment="Center"
+                Margin="0 6 0 6"
+                TextChanged="OnTextChanged" />
+            
+            <Grid Grid.Row="1" Column="0" ColumnSpan="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Label
+                    Grid.Row="0" Grid.Column="0"
+                    Content="Step ="
+                    HorizontalAlignment="Right" VerticalAlignment="Center"
+                    Margin="0 6 0 6" />
+                <TextBox
+                    Name="StepValueTextBox"
+                    Grid.Row="0" Grid.Column="1"
+                    VerticalContentAlignment="Center"
+                    Margin="0 6 0 6"
+                    TextChanged="OnTextChanged" />
+                
+                <Label
+                    Grid.Row="0" Grid.Column="2"
+                    Content="Y ="
+                    HorizontalAlignment="Right" VerticalAlignment="Center"
+                    Margin="0 6 0 6" />
+                <TextBox
+                    Name="YValueTextBox"
+                    Grid.Row="0" Grid.Column="3"
+                    VerticalContentAlignment="Center"
+                    Margin="0 6 0 6"
+                    TextChanged="OnTextChanged" />
+            
+                <Label
+                    Grid.Row="0" Grid.Column="4"
+                    Content="Z ="
+                    HorizontalAlignment="Right" VerticalAlignment="Center"
+                    Margin="0 6 0 6" />
+                <TextBox
+                    Name="ZValueTextBox"
+                    Grid.Row="0" Grid.Column="5"
+                    VerticalContentAlignment="Center"
+                    Margin="0 6 0 6"
+                    TextChanged="OnTextChanged" />
+            </Grid>
+            
+            <Image
+                Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4"
+                Source="images/function.jpg"
+                HorizontalAlignment="Left" VerticalAlignment="Center"
+                Margin="20" />
+        </Grid>
+        
+        <Button 
+            Name="CalculateButton"
+            Grid.Row="1"
+            Click="CalculateOnClick"
+            Width="120"
+            Height="25"
+            Content="Calculate"/>
+    </Grid>
+</Page>

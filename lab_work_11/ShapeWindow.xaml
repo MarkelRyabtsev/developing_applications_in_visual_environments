@@ -1,0 +1,92 @@
+﻿<Window x:Class="lab_work_11.ShapeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:lab_work_11"
+        mc:Ignorable="d"
+        Title="ShapeWindow" Height="300" Width="320" ResizeMode="NoResize">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackPanel
+            Name="PreviewStackPanel"
+            Margin="10"
+            Grid.Row="0"
+            Grid.Column="0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Height="140"
+            Width="140" />
+
+        <GroupBox
+            Margin="10"
+            Grid.Row="0"
+            Grid.Column="1"
+            Header="Shape">
+
+            <StackPanel Margin="10">
+                <RadioButton 
+                    Name="CircleRadioButton" 
+                    GroupName="shape" 
+                    Margin="4" 
+                    IsChecked="True"
+                    Checked="ShapeRadioButton_OnChecked"
+                    Content="Circle"/>
+                <RadioButton 
+                    Name="RoundRectRadioButton" 
+                    GroupName="shape" 
+                    Margin="4"
+                    Checked="ShapeRadioButton_OnChecked"
+                    Content="RoundRect"/>
+                <RadioButton 
+                    Name="EllipseRadioButton" 
+                    GroupName="shape" 
+                    Margin="4"
+                    Checked="ShapeRadioButton_OnChecked"
+                    Content="Ellipse"/>
+                <RadioButton 
+                    Name="SquareRadioButton" 
+                    GroupName="shape" 
+                    Margin="4" 
+                    Checked="ShapeRadioButton_OnChecked"
+                    Content="Square"/>
+                <RadioButton 
+                    Name="RoundSquareRadioButton" 
+                    GroupName="shape" 
+                    Margin="4"
+                    Checked="ShapeRadioButton_OnChecked"
+                    Content="RoundSquare"/>
+                <RadioButton 
+                    Name="RectangleRadioButton" 
+                    GroupName="shape" 
+                    Margin="4"
+                    Checked="ShapeRadioButton_OnChecked"
+                    Content="Rectangle"/>
+            </StackPanel>
+
+        </GroupBox>
+
+        <WrapPanel
+            Grid.Row="1"
+            Grid.ColumnSpan="2"
+            Margin="10"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center">
+            <Button Name="BlackButton" Background="Black" Width="40" Height="30" Click="ColorButton_OnClick" />
+            <Button Name="PurpleButton" Background="Purple" Width="40" Click="ColorButton_OnClick" />
+            <Button Name="GreenButton" Background="Green" Width="40" Click="ColorButton_OnClick" />
+            <Button Name="BlueButton" Background="Blue" Width="40" Click="ColorButton_OnClick" />
+            <Button Name="RedButton" Background="Red" Width="40" Click="ColorButton_OnClick" />
+            <Button Name="YellowButton" Background="Yellow" Width="40" Click="ColorButton_OnClick" />
+            <Button Name="WhiteButton" Background="GhostWhite" Width="40" Click="ColorButton_OnClick" />
+        </WrapPanel>
+    </Grid>
+</Window>

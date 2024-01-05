@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net7.0-windows</TargetFramework>
+        <Nullable>enable</Nullable>
+        <UseWPF>true</UseWPF>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="ScottPlot" Version="4.1.63" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="ScottPlot.WPF">
+        <HintPath>..\..\..\.nuget\packages\scottplot.wpf\4.1.63\lib\net6.0-windows7.0\ScottPlot.WPF.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="images\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="images\function.jpg" />
+      <Resource Include="images\function.jpg" />
+      <None Remove="images\calculate.png" />
+      <Resource Include="images\calculate.png" />
+    </ItemGroup>
+
+</Project>
